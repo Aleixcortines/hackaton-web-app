@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--My own style CSS-->
+
+    <!-- carregar llibreria versio 4.2.1 bootstrap sempre en el head-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Preguntar per què aquestes llibreries-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="./css_hack.css">
+
+
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- Navigation bar, fixed on the top -------------------------------------------------------------->
+
+        <div class="pos-f-t bg-dark fixed-top">
+            <div class="collapse" id="navbarToggleExternalContent">
+                <div class="bg-dark text-center">
+
+                    <!--<a href="#" class="home" v-on:click="makeActive('home')">Home</a>-->
+
+                    <a href="#" v-on:click="makeActive('index')">
+                        <h5 class="text-white">Home</h5>
+                    </a>
+                    <a href="#" v-on:click="makeActive('calendar_events_page')">
+                        <h5 class="text-white">Agenda</h5>
+                    </a>
+                    <a href="#" v-on:click="makeActive('sponsors_page')">
+                        <h5 class="text-white">Sponsors</h5>
+                    </a>
+                    <a href="#" v-on:click="makeActive('news_page')">
+                        <h5 class="text-white">News</h5>
+                    </a>
+
+                </div>
+            </div>
+            <nav class="navbar navbar-dark bg-dark">
+                <button class="navbar-toggler rounded mx-auto d-block" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+
+                    <img src="./images/atom-logo.png" class="image-atom" alt=" image">
+                </button>
+            </nav>
+        </div>
+
+        <!--   index page -------------------------------------------------------->
+
+        <div v-show="active==='index'" class="index">
+
+            <div class="container">
+
+                <div class="h3 text-center">Hackaton Events</div>
+
+                <div class="row">
+
+                    <div class="card-deck">
+
+                        <div class="col-md">
+                            <div class="card ">
+                                <div class="cont-image-card">
+                                    <a href="hack_event.html"> <img src="./images/image-dublin.png" class="image-dublin w-100" alt=" imagen dublin">
+                                        <div class="texto-centrado">
+                                            <p>DUBLIN,</p>
+                                            <p>IRELAND</p>
+                                            <p>5 MAR 2019</p>
+                                        </div>
+                                    </a></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text text-justify">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="card">
+                                <img src="./images/image-toronto.jpg" class="image-toronto w-100" alt="imagen toronto">
+                                <div class="texto-centrado">
+                                    <p>TORONTO,</p>
+                                    <p>CANADA</p>
+                                    <p>15 MAR 2019</p>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text text-justify">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!--   Hack event page and matches -------------------------------------------------------->
+
+        <div v-show="active==='hack_event_page'" class="hack_event_page">
+            <div class="container">
+
+                <div class="h3 text-center">Dublin Hack Party</div>
+
+                <div class="row">
+
+                    <div class="card-deck">
+
+                        <div class="col-md">
+                            <div class="card">
+                                <iframe class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8018.916358018328!2d-6.225597261865575!3d53.306763978607556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4867093039c10e1b%3A0xc2965e50c5f8d73e!2sEngineering+Building%2C+UCD+Engineering+%26+Materials+Science+Centre%2C+University+College+Dublin%2C+Stillorgan+Rd%2C+Belfield%2C+Dublin+4%2C+Irlanda!5e0!3m2!1sca!2ses!4v1551264216829" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                <div class="card-body">
+                                    <h5 class="card-title">UCD Dublin Engineering</h5>
+                                    <p class="card-text text-justify">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-dark">
+                    <div class="card-header text-center">First Match</div>
+                    <div class="card-body text-dark">
+
+
+                        <div class="row">
+
+                            <div class="col">
+                                <img src="images/team1.jpg" class="image_team1" alt="Image team one">
+                                <p>Youth Team</p>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    VS
+                                </div>
+                            </div>
+                            <div class="col">
+                                <img src="images/team2.jpg" class="image_team2" alt="Image team two">
+                                <p class="ubiq-image">Ubiqum</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="card border-dark">
+                    <div class="card-header text-center">Second Match</div>
+                    <div class="card-body text-dark">
+
+                        <div class="row">
+
+                            <div class="col">
+                                <img src="images/team3.png" class="image_team1" alt="Image team three">
+                                <p>Axio Team</p>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    VS
+                                </div>
+                            </div>
+                            <div class="col">
+                                <img src="images/team4.jpg" class="image_team2" alt="Image team four">
+                                <p class="ubiq-image">TurkHack</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="bottom-card card border-dark">
+                    <div class="card-header text-center">Third Match</div>
+                    <div class="card-body text-dark">
+
+                        <div class="row">
+
+                            <div class="col">
+                                <img src="images/team5.jpg" class="image_team1" alt="Image team five">
+                                <p>Umbrella</p>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    VS
+                                </div>
+                            </div>
+                            <div class="col">
+                                <img src="images/team6.png" class="image_team2" alt="Image team six">
+                                <p class="ubiq-image">Alien Team</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <!--   calendar page -------------------------------------------------------->
+
+        <div v-show="active==='calendar_events_page' "class="calendar_events_page">
+            <div class="container">
+
+                <div class="h3 text-center">Upcoming Hack Events</div>
+
+                <ul class="list-group">
+                    <a href="./hack_event.html">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Dublin, Ireland
+                            <span class="badge badge-primary badge-pill">5 March</span>
+                        </li>
+                    </a>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Seattle, USA
+                        <span class="badge badge-primary badge-pill">6 April</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Tokyo, Japan
+                        <span class="badge badge-primary badge-pill">10 May</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        London, UK
+                        <span class="badge badge-primary badge-pill">2 June</span>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <!--News page -->
+
+        <div v-show="active==='news_page' "class="news_page">
+
+            <div class="container">
+
+                <div class="h3 text-center">Hack News</div>
+
+                <div class="row">
+
+                    <div class="card-deck">
+
+                        <div class="col-md">
+                            <div class="card ">
+                                <div class="cont-image-card">
+                                    <a href="hack_event.html"> <img src="./images/new_hackaton.jpg" class="image-notice-one w-100" alt="image news one">
+                                    </a></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Dublin airport announces a new Hackaton</h5>
+                                    <p class="card-text text-justify">Dublin Airport has announced a Smart Airport Hackathon event on April 15-17 in order to foster innovation and enhance the customer experience at the airport.Held at the DCU Alpha Innovation Campus, the hackathon will be held in collaboration with RTÉ Digital and Frontline Ventures, who will provide judges and mentors.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="card">
+                                <img src="./images/new_hackton2.jpg" class="image-notice-two w-100" alt="image news two">
+                                <div class="card-body">
+                                    <h5 class="card-title">Masters of Code Hackaton arrives in San Francisco</h5>
+                                    <p class="card-text text-justify">The next part of MasterCard's awesomely-named "Masters of Code" hackathon series arrives in San Francisco on August 22nd - 23rd to continue its search for the best coders in the world. The city marks the seventh stop on the intense 12-city tour.</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+<!-- Sponsors page-->
+
+            <div v-show="active==='sponsors_page' " class="sponsors_page">
+
+                <div class="container">
+
+                    <div class="h5 text-center">Media Sponsors</div>
+
+                    <div class="row mt-3 ml-5 mb-4">
+
+                        <div class="col mt-4">
+                            <img src="images/cnn.png" class="image_team1" alt="Image team one">
+
+                        </div>
+                        <div class="row align-items-center">
+
+                        </div>
+                        <div class="col">
+                            <img src="images/nbc.jpg" class="image_nbs" alt="Image team two">
+
+                        </div>
+                    </div>
+                    <div class="h5 text-center">Tech Sponsors</div>
+
+                    <div class="row ml-5">
+
+                        <div class="col mt-4">
+                            <img src="images/microsot.png" class="image_micro" alt="Image team one">
+
+                        </div>
+                        <div class="row align-items-center">
+
+                        </div>
+                        <div class="col">
+                            <img src="images/ubiqum_logo.jpg" class="image_ubiqum" alt="Image team two">
+
+                        </div>
+                    </div>
+
+
+                    <div class="h5 text-center">Space Sponsors</div>
+
+                    <div class="row mb-3 ml-5">
+
+                        <div class="col mt-4">
+                            <img src="images/welogo_black.png" class="image_team1" alt="Image team one">
+
+                        </div>
+                        <div class="row align-items-center">
+
+                        </div>
+                        <div class="col">
+                            <img src="images/valkiria-hub-space-logo.png" class="image_nbs" alt="Image team two">
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Navigation bar, fixed on the bottom -->
+
+        <div class="footer text-center bg-dark fixed-bottom">
+
+            <a href="#"><img src="./images/home.png" class="home-icon color-white rounded mt-3" alt="icon home"></a>
+
+            <a href=""><img src="./images/chat.png" class="chat-icon color-white float-right mt-3 mr-4" alt="icon chat"></a>
+
+            <a href="news.html"> <img src="./images/notice.png" class="notice-icon color-white float-left mt-3 ml-4" alt="icon new notices"></a>
+
+        </div>
+
+    </div>
+
+
+
+    <!--Add Vue script-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="hackaton_data.js"></script>
+
+</body>
+
+</html>
