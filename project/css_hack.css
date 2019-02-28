@@ -4,6 +4,81 @@
 .footer {
     height: 60px;
     background-color:#343a40;
+   
+  
 }
 
 
+
+.image-atom {
+    width: 75px;
+ 
+}
+
+
+
+.col-md {
+     margin-bottom: 50px;
+
+}
+
+.cont-image-card {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+.texto-centrado {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+.image_team1 {
+    width: 100px;
+}
+
+.image_team2 {
+    width: 70px;
+    margin-top:10px;
+    margin-left: 50px;
+}
+
+.match-cards {
+    margin-bottom: 500px;
+}
+
+.ubiq-image {
+    margin-top: 17px;
+    margin-left: 55px;
+}
+
+.bottom-card {
+    margin-bottom: 100px;
+}
+
+.image_nbs {
+    width: 150px;
+    margin-right:20px;
+   
+}
+
+.image_micro {
+    width: 120px;
+    margin-bottom: 80px;
+   
+}
+
+.image_ubiqum {
+     width: 150px;
+    margin-right:20px;
+    margin-top:20px;
+}
