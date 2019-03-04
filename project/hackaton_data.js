@@ -1,7 +1,7 @@
 // Creating a new Vue instance and pass in an options object.
 var demo = new Vue({
         
-        // A DOM element to mount our view model.
+      
         el: '#app',
 
         // This is the model.
