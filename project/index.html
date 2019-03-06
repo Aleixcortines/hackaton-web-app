@@ -28,8 +28,6 @@
             <div class="collapse" id="navbarToggleExternalContent">
                 <div class="bg-dark text-center">
 
-                    <!--<a href="#" class="home" v-on:click="makeActive('home')">Home</a>-->
-
                     <a href="#" v-on:click="makeActive('index')">
                         <h5 class="text-white">Home</h5>
                     </a>
@@ -61,38 +59,22 @@
 
                 <div class="h3 text-center">Hackaton Events</div>
 
-                <div class="row">
+                <div class="row" v-for="event in cityEvents">
 
                     <div class="card-deck">
-
                         <div class="col-md">
                             <div class="card ">
                                 <div class="cont-image-card">
-                                    <a href="#" v-on:click="makeActive('hack_event_page')"> <img src="./images/image-dublin.png" class="image-dublin w-100" alt=" imagen dublin">
+                                    <a href="#" v-on:click="getHackaton(event), makeActive('hack_event_page')"> <img v-bind:src="event.image" class="image-dublin w-100" alt=" imagen dublin">
                                         <div class="texto-centrado">
-                                            <p>DUBLIN,</p>
-                                            <p>IRELAND</p>
-                                            <p>5 MAR 2019</p>
+                                            <p>{{event.city}},</p>
+                                            <p>{{event.country}}</p>
+                                            <p>{{event.date}}</p>
                                         </div>
                                     </a></div>
                                 <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text text-justify">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md">
-                            <div class="card">
-                                <img src="./images/image-toronto.jpg" class="image-toronto w-100" alt="imagen toronto">
-                                <div class="texto-centrado-toronto">
-                                    <p class="ml-2">TORONTO,</p>
-                                    <p class="ml-3">CANADA</p>
-                                    <p>15 MAR 2019</p>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text text-justify">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-
+                                    <h5 class="card-title">{{event.name}}</h5>
+                                    <p class="card-text text-justify">{{event.description}}</p>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +89,7 @@
         <div v-show="active==='hack_event_page'" class="hack_event_page">
             <div class="container">
 
-                <div class="h3 text-center">Dublin Hack Party</div>
+                <div class="h3 text-center">{{hackaton.name_hackaton}}</div>
 
                 <div class="row">
 
@@ -115,10 +97,10 @@
 
                         <div class="col-md">
                             <div class="card">
-                                <iframe class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8018.916358018328!2d-6.225597261865575!3d53.306763978607556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4867093039c10e1b%3A0xc2965e50c5f8d73e!2sEngineering+Building%2C+UCD+Engineering+%26+Materials+Science+Centre%2C+University+College+Dublin%2C+Stillorgan+Rd%2C+Belfield%2C+Dublin+4%2C+Irlanda!5e0!3m2!1sca!2ses!4v1551264216829" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                <iframe class="w-100" v-bind:src="hackaton.map_location" frameborder="0" style="border:0" allowfullscreen></iframe>
                                 <div class="card-body">
-                                    <h5 class="card-title">UCD Dublin Engineering</h5>
-                                    <p class="card-text text-justify">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <h5 class="card-title">{{hackaton.university_location}}</h5>
+                                    <p class="card-text text-justify">{{hackaton.description}}</p>
 
                                 </div>
                             </div>
@@ -126,16 +108,15 @@
                     </div>
                 </div>
 
-                <div class="card border-dark">
-                    <div class="card-header text-center">First Match</div>
+                <div class=" card-match card border-dark" v-for="match, i in hackaton.matches">
+                    <div class="card-header text-center">Match {{i+1}}</div>
                     <div class="card-body text-dark">
-
 
                         <div class="row">
 
                             <div class="col">
-                                <img src="images/team1.jpg" class="image_team1" alt="Image team one">
-                                <p>Youth Team</p>
+                                <img v-bind:src="match.image_one" class="image_team1" alt="Image team one">
+                                <p>{{match.team_one}}</p>
                             </div>
                             <div class="row align-items-center">
                                 <div class="col">
@@ -143,61 +124,15 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <img src="images/team2.jpg" class="image_team2" alt="Image team two">
-                                <p class="ubiq-image">Ubiqum</p>
+                                <img v-bind:src="match.image_two" class="image_team2" alt="Image team two">
+                                <p class="ubiq-image">{{match.team_two}}</p>
                             </div>
                         </div>
 
                     </div>
                 </div>
 
-                <div class="card border-dark">
-                    <div class="card-header text-center">Second Match</div>
-                    <div class="card-body text-dark">
 
-                        <div class="row">
-
-                            <div class="col">
-                                <img src="images/team3.png" class="image_team1" alt="Image team three">
-                                <p>Axio Team</p>
-                            </div>
-                            <div class="row align-items-center">
-                                <div class="col">
-                                    VS
-                                </div>
-                            </div>
-                            <div class="col">
-                                <img src="images/team4.jpg" class="image_team2" alt="Image team four">
-                                <p class="ubiq-image">TurkHack</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="bottom-card card border-dark">
-                    <div class="card-header text-center">Third Match</div>
-                    <div class="card-body text-dark">
-
-                        <div class="row">
-
-                            <div class="col">
-                                <img src="images/team5.jpg" class="image_team1" alt="Image team five">
-                                <p>Umbrella</p>
-                            </div>
-                            <div class="row align-items-center">
-                                <div class="col">
-                                    VS
-                                </div>
-                            </div>
-                            <div class="col">
-                                <img src="images/team6.png" class="image_team2" alt="Image team six">
-                                <p class="ubiq-image">Alien Team</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
 
 
 
@@ -208,30 +143,43 @@
 
         <div v-show="active==='calendar_events_page' " class="calendar_events_page">
             <div class="container">
-
                 <div class="h3 text-center">Upcoming Hack Events</div>
-
                 <ul class="list-group mt-5">
-                    <a href="./hack_event.html">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Dublin, Ireland
-                            <span class="badge badge-primary badge-pill">5 March</span>
-                        </li>
-                    </a>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        Seattle, USA
-                        <span class="badge badge-primary badge-pill">6 April</span>
+                        <strike>Seattle, USA</strike>
+                        <span class="badge badge-primary badge-pill">3 Junuary</span>
                     </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strike>Barcelona, CAT</strike>
+                        <span class="badge badge-primary badge-pill">6 February</span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strike>Berlin, GER</strike>
+                        <span class="badge badge-primary badge-pill">6 February</span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Toronto, Canada
+                        <span class="badge badge-primary badge-pill">5 March</span>
+                    </li>
+
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Dublin, Ireland
+                        <span class="badge badge-primary badge-pill">15 March</span>
+                    </li>
+
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Tokyo, Japan
-                        <span class="badge badge-primary badge-pill">10 May</span>
+                        <span class="badge badge-primary badge-pill">6 May</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         London, UK
-                        <span class="badge badge-primary badge-pill">2 June</span>
+                        <span class="badge badge-primary badge-pill">10 May</span>
                     </li>
                 </ul>
-
             </div>
         </div>
 
@@ -312,21 +260,24 @@
                     </div>
                 </div>
 
+            </div>
 
-                <div class="h5 text-center">Space Sponsors</div>
+        </div>
 
-                <div class="row mb-3 ml-5">
+        <!-- Chat section-->
 
-                    <div class="col mt-4">
-                        <img src="images/welogo_black.png" class="image_team1" alt="Image team one">
+        <div v-show="active==='chat_page'" class="chat_page">
 
+            <div class="box_chat">
+                <div class="chat">
+                    <div id="posts" class="box">
+                        Loading posts...
                     </div>
-                    <div class="row align-items-center">
 
-                    </div>
-                    <div class="col">
-                        <img src="images/valkiria-hub-space-logo.png" class="image_nbs" alt="Image team two">
-
+                    <div class="inputs fixed-bottom">
+                        <input id="textInput" class="input" type="text" placeholder="Your message...">
+                        <button id="login" class="button is-info">Login!</button>
+                        <button id="create-post" class="button is-primary">Send</button>
                     </div>
                 </div>
 
@@ -339,18 +290,13 @@
 
         <div class="footer text-center bg-dark fixed-bottom">
 
-            <!--
-            <a href="#" v-on:click="makeActive('index')">
-                        <h5 class="text-white">Home</h5>
-                    </a>
-            -->
 
             <a href="#" v-on:click="makeActive('index')">
                 <img src="./images/home.png" class="home-icon color-white rounded mt-3" alt="icon home">
             </a>
 
 
-            <a href="#" v-on:click="makeActive('')">
+            <a href="#" v-on:click="makeActive('chat_page')">
                 <img src="./images/chat.png" class="chat-icon color-white float-right mt-3 mr-4" alt="icon chat">
             </a>
 
@@ -361,10 +307,29 @@
 
     </div>
 
+    <!--script to Firebase app, to connect on my real time db-->
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDz7oZCebfr8CIrtErxeyBrcAdoRcuz6aY",
+            authDomain: "hackaton-app-7ec48.firebaseapp.com",
+            databaseURL: "https://hackaton-app-7ec48.firebaseio.com",
+            projectId: "hackaton-app-7ec48",
+            storageBucket: "hackaton-app-7ec48.appspot.com",
+            messagingSenderId: "119612639867"
+        };
+        firebase.initializeApp(config);
+    </script>
+
     <!--Vue script-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--json-->
+    <script src="data_json.js"></script>
     <!--JS script-->
     <script src="hackaton_data.js"></script>
+
 
 </body>
 
