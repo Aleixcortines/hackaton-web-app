@@ -39,7 +39,7 @@
 }
 
 .container {
-    margin-top: 100px;
+    margin-top: 150px;
 }
 
 .image_team1 {
@@ -78,7 +78,36 @@
 }
 
 .image_ubiqum {
-     width: 150px;
-    margin-right:20px;
+    width: 150px;
     margin-top:20px;
+    margin-right: 12px;
+}
+
+.texto-centrado-toronto {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.card-match {
+        margin-bottom: 75px;
+}
+
+.box_chat {
+
+    padding-bottom:25px;
+    background-color:darkgrey;
+    margin-top: 96px;
+    border:1px solid rgba(0, 0, 0, 0.54);
+}
+
+
+
+.inputs {
+       margin-bottom: 120px;
+    text-align: center;
 }
