@@ -2,7 +2,7 @@
 
 
 .footer {
-    height: 60px;
+    height: 70px;
     background-color:#343a40;
    
   
@@ -98,11 +98,12 @@
 }
 
 .box_chat {
-
+    overflow-y: scroll;
+    height: 400px;
     padding-bottom:25px;
-    background-color:darkgrey;
     margin-top: 96px;
     border:1px solid rgba(0, 0, 0, 0.54);
+    
 }
 
 
@@ -110,4 +111,102 @@
 .inputs {
        margin-bottom: 120px;
     text-align: center;
+}
+
+
+
+.container_chat {
+        margin-bottom: 71px;
+        background-color: grey;
+    
+}
+
+
+
+.text-box-chat {
+    margin-bottom: 30px;
+    margin-top: 50px;
+    flex-grow: 1;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-style: solid;
+}
+
+.text-login-chat {
+        margin-top: 10px;
+}
+
+.logo-chat {
+        margin-top: 100px;
+        margin-left: 110px;
+}
+
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 27px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 6px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 6px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 26px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(19px, 0);
+  }
+}
+
+
+.buttons {
+        margin-bottom: 30px;
+}
+
+.box {
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-style: solid;
+    margin-right: 10px;
 }
