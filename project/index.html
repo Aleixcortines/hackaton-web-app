@@ -6,9 +6,9 @@
     <title>Document</title>
     <!-- META label to adapt on mobile devices-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- carregar llibreria versio 4.2.1 bootstrap sempre en el head-->
+    <!-- version 4.2.1 bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <!-- Preguntar per què aquestes llibreries-->
+    <!-- More libraries for bootstrap-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
@@ -20,11 +20,11 @@
 
 <body>
 
-    <!-- VUE -->
+    <!-- id Vue.js -->
 
     <div id="app">
 
-        <!-- Navigation bar, fixed on the top -------------------------------------------------------------->
+        <!-- Navigation bar, fixed on the top. With vue, we execute the function makeActive() to show the content of the menu-------------------------------------------------------------->
 
         <div class="pos-f-t bg-dark fixed-top">
             <div class="collapse" id="navbarToggleExternalContent">
@@ -53,7 +53,7 @@
             </nav>
         </div>
 
-        <!--   index page -------------------------------------------------------->
+        <!--   index page section -------------------------------------------------------->
 
         <div v-show="active==='index'" class="index">
 
@@ -67,6 +67,7 @@
                         <div class="col-md">
                             <div class="card ">
                                 <div class="cont-image-card">
+                                    <!--when the user click a hackaton it call getHackaton function to load the content of dublin, london..etc -->
                                     <a href="#" v-on:click="getHackaton(event), makeActive('hack_event_page')"> <img v-bind:src="event.image" class="image-dublin w-100" alt=" imagen dublin">
                                         <div class="texto-centrado">
                                             <p>{{event.city}},</p>
@@ -86,7 +87,7 @@
 
         </div>
 
-        <!--   Hack event page and matches -------------------------------------------------------->
+        <!--   Section of Hack event page and matches -------------------------------------------------------->
 
         <div v-show="active==='hack_event_page'" class="hack_event_page">
             <div class="container">
@@ -111,6 +112,7 @@
                 </div>
 
                 <div class=" card-match card border-dark" v-for="match, i in hackaton.matches">
+                    <!--  "i" is to show every number of iterations (match 1, 2 and 3) -->
                     <div class="card-header text-center">Match {{i+1}}</div>
                     <div class="card-body text-dark">
 
@@ -141,13 +143,14 @@
             </div>
         </div>
 
-        <!--   calendar page -------------------------------------------------------->
+        <!-- Section calendar page -------------------------------------------------------->
 
         <div v-show="active==='calendar_events_page' " class="calendar_events_page">
             <div class="container">
                 <div class="h3 text-center">Upcoming Hack Events</div>
                 <ul class="list-group mt-5">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <!-- <strike> is a label to cross out the text-->
                         <strike>Seattle, USA</strike>
                         <span class="badge badge-primary badge-pill">3 Junuary</span>
                     </li>
@@ -185,7 +188,7 @@
             </div>
         </div>
 
-        <!--News page -->
+        <!--Section News page -->
 
         <div v-show="active==='news_page' " class="news_page">
 
@@ -194,6 +197,8 @@
                 <div class="h3 text-center">Hack News</div>
 
                 <div class="row">
+
+                    <!--  Cards with bootstrap-->
 
                     <div class="card-deck">
 
@@ -223,7 +228,7 @@
             </div>
         </div>
 
-        <!-- Sponsors page-->
+        <!-- Section Sponsors page-->
 
         <div v-show="active==='sponsors_page' " class="sponsors_page">
 
@@ -270,48 +275,42 @@
 
         <div v-show="active==='chat_page'" class="chat_page">
 
+            <div class="container">
 
-            <div class="box_chat">
-
-                <div v-show="message_chat">
-
-                    <img class="logo-chat" src="https://i.ibb.co/KW5w3vQ/chat-logo.png" alt="imagen chat"></div>
-
-
-                <div class="box" id="posts" v-for="message in messages">
-                    <div class="messsage-author ml-2">{{message.author}}:</div> 
-                    <div class="message ml-2">{{message.message}}</div>
-                </div>
-
-                <div class=" container_chat inputs fixed-bottom">
-                    <div class="row">
-                        
-                            <input id="textInput" class="text-box-chat input text-center" type="text" placeholder="Your message" v-model="text">
-                        
+                
+                    <div v-show="message_chat">
+                        <img class="logo-chat" src="https://i.ibb.co/KW5w3vQ/chat-logo.png" alt="imagen chat">
                     </div>
-                  
+
+                    <!--Name and message-->
+                    <div class="box" id="posts" v-for="message in messages">
+                        <div class="messsage-author ml-2">{{message.author}}:</div>
+                        <div class="message ml-2">{{message.message}}</div>
+                    </div>
+              
+
+                <div class="container_chat inputs fixed-bottom">
+
+
+                    <input id="textInput" class="text-box-chat input text-center" type="text" placeholder="Your message" v-model="text">
+
+                    <!-- Login button-->
                     <button v-on:click="login" id="login" class=" buttons button is-info">Login</button>
+                    <!-- Unlog button, the v-if is to show the button only with the user is unlogin on the chat-->
                     <button v-on:click="unLogin" id="login" class="buttons is-info" v-if="noLog">Logout</button>
+                    <!-- Send button, the v-if is to show only the button with the user is unlogin on the chat-->
                     <button v-on:click="writeNewPost" id="create-post" class="buttons is-primary" v-if="noLog">Send </button>
-                   
 
                 </div>
+
             </div>
 
         </div>
-
-
-
-
         <!-- Navigation bar, fixed on the bottom -->
-
         <div class="footer text-center bg-dark fixed-bottom">
-
-
             <a href="#" v-on:click="makeActive('index')">
                 <img src="./images/home.png" class="home-icon color-white rounded mt-3" alt="icon home">
             </a>
-
 
             <a href="#" v-on:click="makeActive('chat_page')">
                 <img src="./images/chat.png" class="chat-icon color-white float-right mt-3 mr-4" alt="icon chat">
@@ -343,13 +342,10 @@
 
     <!--Vue script-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <!-- Vue resource-->
+    <!-- Vue resource, to do the call to my Json (load on myjson.com)-->
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
-   
     <!--JS script-->
     <script src="hackaton_data.js"></script>
-
-
 </body>
 
 </html>
