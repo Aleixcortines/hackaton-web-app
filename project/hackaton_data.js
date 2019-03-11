@@ -23,10 +23,11 @@
 //        })
 //}
 
-// Creating a new Vue instance and pass in an options object.
+// vue.js Object
 var demo = new Vue({
 
     el: '#app',
+    //on mounted We put this function is to call my json (on myjason.com url)
     mounted() {
         this.cargarPage();
     },
@@ -38,9 +39,7 @@ var demo = new Vue({
         cityEvents: [],
         Myjson: [],
         active: 'index',
-        jsonData: [],
         hackaton: {},
-        cityEvents: [],
         text: "",
         messages: [],
         noLog: false,
@@ -51,11 +50,13 @@ var demo = new Vue({
 
     // Functions we will be using.
     methods: {
-
+        //function to call the json on myjason.com
         cargarPage() {
 
             this.$http.get('https://api.myjson.com/bins/uw5e6')
                 .then((response) => {
+
+                    //on this variables I put the values of my json 
 
                     this.Myjson = response.body;
 
@@ -64,6 +65,8 @@ var demo = new Vue({
                     this.cityEvents = response.body.events;
                 });
         },
+
+        //function to show every part of the menu
 
         makeActive: function (item) {
             // When a model is changed, the view will be automatically updated.
@@ -75,7 +78,7 @@ var demo = new Vue({
             this.hackaton = this.jsonData.filter(event => event.name_hackaton == hackaton.name)[0];
 
         },
-        // to do the login
+        // function to do the login
         login() {
 
             //Provider
@@ -83,7 +86,7 @@ var demo = new Vue({
             var provider = new firebase.auth.GoogleAuthProvider();
 
             //How to signin
-
+            //posar el condicional aqui the true i false
             firebase.auth().signInWithPopup(provider).then(() => this.getPosts());
 
             console.log("login")
@@ -93,7 +96,7 @@ var demo = new Vue({
 
 
         },
-
+        //function to unlogin
         unLogin() {
 
             firebase.auth().signOut();
@@ -104,6 +107,8 @@ var demo = new Vue({
             this.message_chat = true;
 
         },
+
+        //functions to write messages on the chat
 
         writeNewPost() {
 
@@ -122,6 +127,8 @@ var demo = new Vue({
 
         getPosts() {
 
+            //every time we put empty the message array
+
             demo.messages = [];
             firebase.database().ref('hack_chat').on('value', function (data) {
 
@@ -135,6 +142,8 @@ var demo = new Vue({
         }
 
     },
+
+    //function to know if a user is signes or not
     created() {
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
